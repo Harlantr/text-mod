@@ -7,6 +7,9 @@ class TextInput extends Component {
     }
 
     handleChange(event) {
+        /*
+            Propagate the text change
+        */
         this.props.textCallback(event.target.value);
     }
 

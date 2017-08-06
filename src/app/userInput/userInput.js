@@ -10,10 +10,16 @@ class UserInput extends Component {
     }
 
     handleTextChange(text) {
+        /*
+            Propagate the text change
+        */
         this.props.textCallback(text);
     }
 
     handleCountChange(count) {
+        /*
+            Propagate the count change
+        */
         this.props.countCallback(count);
     }
 

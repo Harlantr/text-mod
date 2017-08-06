@@ -17,12 +17,18 @@ class App extends Component {
     }
 
     handleTextChange (text) {
+        /*
+            Set user's text
+        */
         this.setState({
             text: text
         });
     }
 
     handleCountChange (count) {
+        /*
+            Set user's count
+        */
         this.setState({
             count: count
         });
