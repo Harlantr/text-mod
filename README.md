@@ -1,3 +1,3 @@
-# Text Multiplier
+# Text Mod
 
-A simple React app that will multiply a given string X number of times based on user input.  Eventually, there will be a way to add a placeholder for variables, such as numbers, letters, or dates.
+A simple React app that will take a string provided by the user and apply various modifications to it, such as multiplying it X times or replacing strings of text with other strings of text.
