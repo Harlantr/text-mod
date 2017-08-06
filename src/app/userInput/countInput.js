@@ -4,36 +4,29 @@ class CountInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            value: 1
         }
         this.handleChange = this.handleChange.bind(this);
-        this.onKeyPress = this.onKeyPress.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-    handleChange() {
-        this.props.countCallback(this.state.value);
+    handleChange(event) {
+        this.props.countCallback(event.target.value);
     }
 
-    onKeyPress(event) {
-        const re = /[0-9]+/g;
-        const value = event.target.value;
-        if(re.test(value)){
-            console.log("test");
-            this.setState({
-                value: value
-            });
-        } else {
+    handleKeyPress(event) {
+        if(!(event.charCode >= 48 && event.charCode <= 57)){
             event.preventDefault();
         }
     }
 
     render() {
         return (
-            <input type="number"
+            <input type="text"
                     min="1"
-                    onKeyPress={this.onKeyPress}
-                    onChange={this.handleChange}
-                    value={this.state.value}/>
+                    defaultValue={this.state.value}
+                    onKeyPress={this.handleKeyPress}
+                    onChange={this.handleChange}/>
         );
     }
 }
