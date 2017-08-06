@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { changeCount } from '../../modules/reducer';
 
 class CountInput extends Component {
     constructor(props) {
@@ -11,7 +14,7 @@ class CountInput extends Component {
         /*
             Propagate the count change
         */
-        this.props.countCallback(event.target.value);
+        this.props.changeCount(event.target.value);
     }
 
     handleKeyPress(event) {
@@ -28,11 +31,22 @@ class CountInput extends Component {
     render() {
         return (
             <input type="text"
-                    defaultValue="1"
+                    defaultValue={this.props.count}
                     onKeyPress={this.handleKeyPress}
                     onChange={this.handleChange}/>
         );
     }
 }
 
-export default CountInput
+const mapStateToProps = state => ({
+  count: state.reducer.count
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  changeCount
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CountInput)

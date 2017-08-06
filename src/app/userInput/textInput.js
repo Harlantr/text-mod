@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { changeText } from '../../modules/reducer';
 
 class TextInput extends Component {
     constructor(props) {
@@ -10,7 +13,7 @@ class TextInput extends Component {
         /*
             Propagate the text change
         */
-        this.props.textCallback(event.target.value);
+        this.props.changeText(event.target.value);
     }
 
     render() {
@@ -20,4 +23,15 @@ class TextInput extends Component {
     }
 }
 
-export default TextInput
+const mapStateToProps = state => ({
+  text: state.reducer.text
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  changeText
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TextInput)

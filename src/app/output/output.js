@@ -1,47 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-class Output extends Component {
-    constructor(props) {
-        super(props);
-        this.modifiedUserInput = this.modifiedUserInput.bind(this);
-    }
+const Output = props => {
+    let finalOutput = props.output.map(
+        (line, i) => <p key={`line${i}`}>{line}</p>
+    );
 
-    modifiedUserInput() {
-        /*
-            Modify the user's input by replacing special
-            characters with their associated values.
-        */
-        const userCount = this.props.userInput.count;
-        const userText = this.props.userInput.text;
-        const finalCount = userCount > 50 ? 50 : userCount;
-        let output = [];
-
-        for (var i = 0; i < finalCount; i++) {
-            let modString = userText;
-
-            // Apply user modifications
-            modString = modString.replace(/~i|~n/gi, (s) => {
-                // Replace reserved characters with new values
-                const specChars = {
-                    '~i': i,
-                    '~n': i+1
-                };
-                return specChars[s];
-            });
-
-            // Push text into output
-            output.push(
-                <p key={`line${i}`}>{modString}</p>
-            );
-        }
-        return output;
-    }
-
-    render() {
-        return (
-            <pre>{this.modifiedUserInput()}</pre>
-        );
-    }
+    return <pre>{finalOutput}</pre>
 }
 
-export default Output
+const mapStateToProps = state => ({
+  output: state.reducer.output
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Output)
