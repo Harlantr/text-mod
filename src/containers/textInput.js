@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changeText } from '../../modules/reducer';
+import { changeText } from '../actions/actions';
 
 class TextInput extends Component {
     constructor(props) {

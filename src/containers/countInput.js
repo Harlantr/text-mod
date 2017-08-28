@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changeCount } from '../../modules/reducer';
+import { changeCount } from '../actions/actions';
 
 class CountInput extends Component {
     constructor(props) {
