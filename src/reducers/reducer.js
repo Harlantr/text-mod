@@ -48,30 +48,34 @@ const setCount = (state, action) => {
 }
 
 const MAX_COUNT = 50;
+const convertASCII = (i) => (i >= 26 ? convertASCII((i / 26 >> 0) - 1) : '') + 'abcdefghijklmnopqrstuvwxyz'[i % 26 >> 0];
+
 const setOutput = (state) => {
     const finalCount = state.count > MAX_COUNT ? MAX_COUNT : state.count;
-    let lines = [];
+    let output = [];
 
     for (var i = 0; i < finalCount; i++) {
         let line = state.userText;
 
         // Apply user modifications
         // eslint-disable-next-line
-        line = line.replace(/~i|~n/g, (s) => {
+        line = line.replace(/~i|~n|~a/g, (s) => {
             // Replace reserved characters with new values
             const specChars = {
                 '~i': i,
-                '~n': i+1
+                '~n': i+1,
+                '~a': convertASCII(i)
             };
             return specChars[s];
         });
 
         // Push text into output
-        lines.push(line);
+        output.push(line);
     };
 
     return {
         ...state,
-        output: lines
+        output: output
     };
 };
+
