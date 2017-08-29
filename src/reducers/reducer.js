@@ -1,6 +1,7 @@
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const CHANGE_COUNT = 'CHANGE_COUNT';
-export const BUILD_OUTPUT = 'BUILD_OUTPUT';
+export const BUILD_SHORT_OUTPUT = 'BUILD_SHORT_OUTPUT';
+export const BUILD_FULL_OUTPUT = 'BUILD_FULL_OUTPUT';
 
 /*
     Initial State Object
@@ -8,7 +9,8 @@ export const BUILD_OUTPUT = 'BUILD_OUTPUT';
 const initialState = {
     count: 1,
     userText: '',
-    output: []
+    shortOutput: [],
+    fullOutput: ''
 };
 
 /*
@@ -22,8 +24,11 @@ export default (state = initialState, action) => {
         case CHANGE_COUNT:
             return setCount(state, action);
 
-        case BUILD_OUTPUT:
-            return setOutput(state);
+        case BUILD_SHORT_OUTPUT:
+            return setShortOutput(state);
+
+        case BUILD_FULL_OUTPUT:
+            return setFullOutput(state);
 
         default:
             return state;
@@ -47,15 +52,33 @@ const setCount = (state, action) => {
     };
 }
 
-const MAX_COUNT = 50;
-const convertASCII = (i) => (i >= 26 ? convertASCII((i / 26 >> 0) - 1) : '') + 'abcdefghijklmnopqrstuvwxyz'[i % 26 >> 0];
+const setShortOutput = state => {
+    const max_count = 50;
+    const finalCount = state.count > max_count ? max_count : state.count;
 
-const setOutput = (state) => {
-    const finalCount = state.count > MAX_COUNT ? MAX_COUNT : state.count;
+    return {
+        ...state,
+        shortOutput: buildOutput(state.userText, finalCount)
+    };
+};
+
+const setFullOutput = state => {
+    const fullOutputArray = buildOutput(state.userText, state.count);
+
+    return {
+        ...state,
+        fullOutput: fullOutputArray.join("\n")
+    };
+}
+
+/*
+    Utils
+*/
+const convertASCII = i => (i >= 26 ? convertASCII((i / 26 >> 0) - 1) : '') + 'abcdefghijklmnopqrstuvwxyz'[i % 26 >> 0];
+const buildOutput = (text, count) => {
     let output = [];
-
-    for (var i = 0; i < finalCount; i++) {
-        let line = state.userText;
+    for (var i = 0; i < count; i++) {
+        let line = text;
 
         // Apply user modifications
         // eslint-disable-next-line
@@ -73,9 +96,5 @@ const setOutput = (state) => {
         output.push(line);
     };
 
-    return {
-        ...state,
-        output: output
-    };
-};
-
+    return output;
+}

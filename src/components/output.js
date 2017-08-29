@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const Output = props => {
-    let finalOutput = props.output.map(
+    let finalOutput = props.shortOutput.map(
         (line, i) => <p key={`line${i}`}>{line}</p>
     );
 
@@ -11,7 +11,7 @@ const Output = props => {
 }
 
 const mapStateToProps = state => ({
-  output: state.reducer.output
+  shortOutput: state.reducer.shortOutput
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
