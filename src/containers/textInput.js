@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../actions/actions';
+import { Input } from 'react-materialize';
 
 class TextInput extends Component {
     constructor(props) {
@@ -18,7 +19,10 @@ class TextInput extends Component {
 
     render() {
         return (
-            <input type="text" onChange={this.handleChange}/>
+            <Input placeholder="Input"
+                    s={10}
+                    label="Base Input"
+                    onChange={this.handleChange}/>
         );
     }
 }

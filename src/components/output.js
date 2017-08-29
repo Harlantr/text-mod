@@ -3,11 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const Output = props => {
-    let finalOutput = props.shortOutput.map(
+    const finalOutput = props.shortOutput.map(
         (line, i) => <p key={`line${i}`}>{line}</p>
     );
 
-    return <pre>{finalOutput}</pre>
+    return (
+        <div className="amber lighten-5">
+            <pre style={{padding: '0 1em'}}>{finalOutput}</pre>
+        </div>
+    );
 }
 
 const mapStateToProps = state => ({

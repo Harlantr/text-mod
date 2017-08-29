@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { buildFullOutput } from '../actions/actions';
 import copy from 'copy-to-clipboard';
+import { Button } from 'react-materialize';
 
 class CopyAllButton extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class CopyAllButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleCopy}>Copy All</button>
+                <Button onClick={this.handleCopy}>Copy All</Button>
             </div>
         );
     }

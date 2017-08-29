@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeCount } from '../actions/actions';
+import { Input } from 'react-materialize';
 
 class CountInput extends Component {
     constructor(props) {
@@ -30,7 +31,11 @@ class CountInput extends Component {
 
     render() {
         return (
-            <input type="text"
+            <Input laceholder="Count"
+                    s={2}
+                    label="Count"
+                    type="number"
+                    min="0"
                     defaultValue={this.props.count}
                     onKeyPress={this.handleKeyPress}
                     onChange={this.handleChange}/>
