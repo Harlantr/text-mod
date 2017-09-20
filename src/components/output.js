@@ -8,20 +8,26 @@ const Output = props => {
     );
 
     return (
-        <div className="amber lighten-5">
-            <pre style={{padding: '0 1em'}}>{finalOutput}</pre>
+        <div>
+          {
+            props.shortOutput.length > 0 ?
+            <div className="amber lighten-5">
+                <pre style={{padding: '0 1em'}}>{finalOutput}</pre>
+            </div> :
+            null
+          }
         </div>
     );
 }
 
 const mapStateToProps = state => ({
-  shortOutput: state.reducer.shortOutput
+    shortOutput: state.reducer.shortOutput
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Output)

@@ -22,7 +22,11 @@ class CopyAllButton extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.handleCopy}>Copy All</Button>
+                {
+                    this.props.fullOutput.length > 0 ?
+                    <Button waves='light' onClick={this.handleCopy}>Copy All</Button> :
+                    null
+                }
             </div>
         );
     }

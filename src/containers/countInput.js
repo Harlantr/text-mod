@@ -31,7 +31,7 @@ class CountInput extends Component {
 
     render() {
         return (
-            <Input laceholder="Count"
+            <Input placeholder="Count"
                     s={2}
                     label="Count"
                     type="number"
