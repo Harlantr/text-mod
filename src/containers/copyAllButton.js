@@ -23,7 +23,7 @@ class CopyAllButton extends Component {
         return (
             <div>
                 {
-                    this.props.fullOutput.length > 0 ?
+                    this.props.shortOutput.length > 0 ?
                     <Button waves='light' onClick={this.handleCopy}>Copy All</Button> :
                     null
                 }
@@ -33,6 +33,7 @@ class CopyAllButton extends Component {
 }
 
 const mapStateToProps = state => ({
+    shortOutput: state.reducer.shortOutput,
     fullOutput: state.reducer.fullOutput
 })
 

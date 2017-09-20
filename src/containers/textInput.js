@@ -22,13 +22,14 @@ class TextInput extends Component {
             <Input placeholder="Input"
                     s={10}
                     label="Base Input"
-                    onChange={this.handleChange}/>
+                    onChange={this.handleChange}
+                    value={this.props.userText}/>
         );
     }
 }
 
 const mapStateToProps = state => ({
-  text: state.reducer.text
+  userText: state.reducer.userText
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

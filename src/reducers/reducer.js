@@ -10,7 +10,7 @@ const initialState = {
     count: 1,
     userText: '',
     shortOutput: [],
-    fullOutput: ''
+    fullOutput: []
 };
 
 /*
