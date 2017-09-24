@@ -9,6 +9,9 @@ export const BUILD_FULL_OUTPUT = 'BUILD_FULL_OUTPUT';
 const initialState = {
     count: 1,
     userText: '',
+    numericIncrementorOptions: {
+        exists: false
+    },
     shortOutput: [],
     fullOutput: []
 };
@@ -39,9 +42,15 @@ export default (state = initialState, action) => {
     Internal reducer methods
 */
 const setUserText = (state, action) => {
+    const newUserText = action.userText;
+    const numericIncrementorExists = action.userText.indexOf('~n') !== -1;
+
     return {
         ...state,
-        userText: action.userText
+        userText: newUserText,
+        numericIncrementorOptions: {
+            exists: numericIncrementorExists
+        }
     };
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import SideMenu from '../containers/sideMenu';
+import SideMenu from './sideMenu';
 import UserInput from './userInput';
 import Output from './output';
 import CopyAllButton from '../containers/copyAllButton';
