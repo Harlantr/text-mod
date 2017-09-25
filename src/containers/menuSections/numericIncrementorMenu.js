@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../../actions/actions';
 import { Button } from 'react-materialize';
+import { numericIncrementor } from '../../lib/variableDefinitions';
 
 class NumericIncrementorMenu extends Component {
     constructor (props) {
@@ -11,7 +12,7 @@ class NumericIncrementorMenu extends Component {
     }
 
     addNumericVariable () {
-        const newString = this.props.userText + '~n';
+        const newString = this.props.userText + numericIncrementor;
         this.props.changeText(newString);
     }
 

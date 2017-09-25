@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../../actions/actions';
 import { Button } from 'react-materialize';
+import { indexIncrementor } from '../../lib/variableDefinitions';
 
 class IndexIncrementorMenu extends Component {
     constructor (props) {
@@ -11,7 +12,7 @@ class IndexIncrementorMenu extends Component {
     }
 
     addIndexVariable () {
-        const newString = this.props.userText + '~i';
+        const newString = this.props.userText + indexIncrementor;
         this.props.changeText(newString);
     }
 
