@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../../actions/actions';
 import { Button } from 'react-materialize';
+import { alphabetIncrementor } from '../../lib/variableDefinitions';
 
 class AlphabetIncrementorMenu extends Component {
     constructor (props) {
@@ -11,7 +12,7 @@ class AlphabetIncrementorMenu extends Component {
     }
 
     addAlphabetVariable () {
-        const newString = this.props.userText + '~a';
+        const newString = this.props.userText + alphabetIncrementor;
         this.props.changeText(newString);
     }
 

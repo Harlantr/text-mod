@@ -1,3 +1,10 @@
+import '../lib/applyMods';
+import {
+    indexIncrementor ,
+    numericIncrementor,
+    alphabetIncrementor
+} from '../lib/variableDefinitions';
+
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const CHANGE_COUNT = 'CHANGE_COUNT';
 export const BUILD_SHORT_OUTPUT = 'BUILD_SHORT_OUTPUT';
@@ -43,7 +50,7 @@ export default (state = initialState, action) => {
 */
 const setUserText = (state, action) => {
     const newUserText = action.userText;
-    const numericIncrementorExists = action.userText.indexOf('~n') !== -1;
+    const numericIncrementorExists = action.userText.indexOf(numericIncrementor) !== -1;
 
     return {
         ...state,
@@ -80,29 +87,10 @@ const setFullOutput = state => {
     };
 }
 
-/*
-    Utils
-*/
-const convertASCII = i => (i >= 26 ? convertASCII((i / 26 >> 0) - 1) : '') + 'abcdefghijklmnopqrstuvwxyz'[i % 26 >> 0];
 const buildOutput = (text, count) => {
     let output = [];
     for (var i = 0; i < count; i++) {
-        let line = text;
-
-        // Apply user modifications
-        // eslint-disable-next-line
-        line = line.replace(/~i|~n|~a/g, (s) => {
-            // Replace reserved characters with new values
-            const specChars = {
-                '~i': i,
-                '~n': i+1,
-                '~a': convertASCII(i)
-            };
-            return specChars[s];
-        });
-
-        // Push text into output
-        output.push(line);
+        output.push(text.applyMods(i));
     };
 
     return output;
