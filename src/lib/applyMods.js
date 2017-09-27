@@ -1,11 +1,7 @@
-import {
-    indexIncrementor ,
-    numericIncrementor,
-    alphabetIncrementor
-} from './variableDefinitions';
+import incrementors from '../const/incrementors';
 
 // Build regex that matches increment variables 'globally'
-const regexString = `${indexIncrementor}|${numericIncrementor}|${alphabetIncrementor}`;
+const regexString = `${incrementors.index}|${incrementors.number}|${incrementors.alphabet}`;
 const regex = new RegExp(regexString, "g");
 
 // eslint-disable-next-line
@@ -14,11 +10,11 @@ String.prototype.applyMods = function(i) {
     //If string sector matches regex, return that sector as the correct variable value
     return this.replace(regex, s => {
         switch(s){
-            case indexIncrementor:
+            case incrementors.index:
                 return i;
-            case numericIncrementor:
+            case incrementors.number:
                 return i + 1;
-            case alphabetIncrementor:
+            case incrementors.alphabet:
                 return intToAlpha(i);
             default:
                 return s;

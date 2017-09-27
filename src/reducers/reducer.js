@@ -1,14 +1,6 @@
 import '../lib/applyMods';
-import {
-    indexIncrementor ,
-    numericIncrementor,
-    alphabetIncrementor
-} from '../lib/variableDefinitions';
-
-export const CHANGE_TEXT = 'CHANGE_TEXT';
-export const CHANGE_COUNT = 'CHANGE_COUNT';
-export const BUILD_SHORT_OUTPUT = 'BUILD_SHORT_OUTPUT';
-export const BUILD_FULL_OUTPUT = 'BUILD_FULL_OUTPUT';
+import incrementors from '../const/incrementors';
+import reducerActions from '../const/reducerActions';
 
 /*
     Initial State Object
@@ -28,16 +20,16 @@ const initialState = {
 */
 export default (state = initialState, action) => {
     switch (action.type) {
-        case CHANGE_TEXT:
+        case reducerActions.CHANGE_TEXT:
             return setUserText(state, action);
 
-        case CHANGE_COUNT:
+        case reducerActions.CHANGE_COUNT:
             return setCount(state, action);
 
-        case BUILD_SHORT_OUTPUT:
+        case reducerActions.BUILD_SHORT_OUTPUT:
             return setShortOutput(state);
 
-        case BUILD_FULL_OUTPUT:
+        case reducerActions.BUILD_FULL_OUTPUT:
             return setFullOutput(state);
 
         default:
@@ -50,7 +42,7 @@ export default (state = initialState, action) => {
 */
 const setUserText = (state, action) => {
     const newUserText = action.userText;
-    const numericIncrementorExists = action.userText.indexOf(numericIncrementor) !== -1;
+    const numericIncrementorExists = newUserText.indexOf(incrementors.number) !== -1;
 
     return {
         ...state,
