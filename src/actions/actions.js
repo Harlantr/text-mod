@@ -1,18 +1,13 @@
-import {
-    CHANGE_TEXT,
-    CHANGE_COUNT,
-    BUILD_SHORT_OUTPUT,
-    BUILD_FULL_OUTPUT
-} from '../reducers/reducer';
+import reducerActions from '../const/reducerActions';
 
 export const changeText = userText => {
     return dispatch => {
         dispatch({
-            type: CHANGE_TEXT,
+            type: reducerActions.CHANGE_TEXT,
             userText: userText
         });
         dispatch({
-            type: BUILD_SHORT_OUTPUT
+            type: reducerActions.BUILD_SHORT_OUTPUT
         });
     };
 };
@@ -20,11 +15,11 @@ export const changeText = userText => {
 export const changeCount = count => {
     return dispatch => {
         dispatch({
-            type: CHANGE_COUNT,
+            type: reducerActions.CHANGE_COUNT,
             count: count
         });
         dispatch({
-            type: BUILD_SHORT_OUTPUT
+            type: reducerActions.BUILD_SHORT_OUTPUT
         });
     };
 };
@@ -32,7 +27,7 @@ export const changeCount = count => {
 export const buildFullOutput = () => {
     return dispatch => {
         dispatch({
-            type: BUILD_FULL_OUTPUT
+            type: reducerActions.BUILD_FULL_OUTPUT
         });
     };
 };

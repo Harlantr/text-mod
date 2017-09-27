@@ -11,27 +11,23 @@ import IndexIncrementorMenu from '../containers/menuSections/indexIncrementorMen
 import NumericIncrementorMenu from '../containers/menuSections/numericIncrementorMenu';
 import AlphabetIncrementorMenu from '../containers/menuSections/alphabetIncrementorMenu';
 
-import {
-    indexIncrementor ,
-    numericIncrementor,
-    alphabetIncrementor
-} from '../lib/variableDefinitions';
+import incrementors from '../const/incrementors';
 
 const SideMenu = props => (
     <SideNav trigger={<Button>Menu</Button>} options={{ closeOnClick: true }}>
         <SideNavItem subheader>Variables</SideNavItem>
         <Collapsible>
-            <CollapsibleItem header={indexIncrementor}>
+            <CollapsibleItem header={incrementors.index}>
                 <IndexIncrementorMenu />
             </CollapsibleItem>
         </Collapsible>
         <Collapsible>
-            <CollapsibleItem header={numericIncrementor}>
+            <CollapsibleItem header={incrementors.number}>
                 <NumericIncrementorMenu/>
             </CollapsibleItem>
         </Collapsible>
         <Collapsible>
-            <CollapsibleItem header={alphabetIncrementor}>
+            <CollapsibleItem header={incrementors.alphabet}>
                 <AlphabetIncrementorMenu/>
             </CollapsibleItem>
         </Collapsible>
