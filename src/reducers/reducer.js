@@ -1,6 +1,6 @@
-import '../lib/applyMods';
 import incrementors from '../const/incrementors';
 import reducerActions from '../const/reducerActions';
+import buildOutput from '../lib/buildOutput';
 
 /*
     Initial State Object
@@ -71,19 +71,8 @@ const setShortOutput = state => {
 };
 
 const setFullOutput = state => {
-    const fullOutputArray = buildOutput(state.userText, state.count);
-
     return {
         ...state,
-        fullOutput: fullOutputArray.join("\n")
+        fullOutput: buildOutput(state.userText, state.count)
     };
-}
-
-const buildOutput = (text, count) => {
-    let output = [];
-    for (var i = 0; i < count; i++) {
-        output.push(text.applyMods(i));
-    };
-
-    return output;
 }
