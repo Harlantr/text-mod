@@ -1,30 +1,31 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import { createStore, applyMiddleware, compose } from "redux";
+import freeze from "redux-freeze";
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
-const initialState = {}
-const enhancers = []
-const middleware = [
+// add the middlewares
+let middlewares = [
   thunk
-]
+];
 
-if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.devToolsExtension
-
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension())
-  }
+// add the freeze dev middleware
+if (process.env.NODE_ENV !== 'production') {
+  middlewares.push(freeze);
 }
 
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
-)
+// apply the middleware
+let middleware = applyMiddleware(...middlewares);
 
+// add the redux dev tools
+if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
+  middleware = compose(middleware, window.devToolsExtension());
+}
+
+// create the store
 const store = createStore(
   rootReducer,
-  initialState,
-  composedEnhancers
-)
+  middleware
+);
 
-export default store
+// export
+export { store };

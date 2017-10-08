@@ -16,7 +16,7 @@ class CopyAllButton extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        copy(nextProps.fullOutput);
+        copy(nextProps.fullOutput.join('\n'));
     }
 
     render() {

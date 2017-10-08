@@ -4,7 +4,6 @@ import incrementors from '../const/incrementors';
 const regexString = `${incrementors.index}|${incrementors.number}|${incrementors.alphabet}`;
 const regex = new RegExp(regexString, "g");
 
-// eslint-disable-next-line
 String.prototype.applyMods = function(i) {
 
     //If string sector matches regex, return that sector as the correct variable value
@@ -23,22 +22,22 @@ String.prototype.applyMods = function(i) {
 }
 
 /*
-    Convert an integer to an alphabetical representation of that number.
+    Convert an integer (based at index 0) to an alphabetical representation of that number.
 
     Ex:
-        1 = a
-        2 = b
-        3 = c
+        0 = a
+        1 = b
+        2 = c
         ...
-        26 = z
-        27 = aa
-        28 = ab
-        29 = ac
+        27 = z
+        28 = aa
+        29 = ab
+        30 = ac
         ...
-        702 = zz
-        703 = aaa
-        704 = aab
-        705 = aac
+        701 = zz
+        702 = aaa
+        703 = aab
+        704 = aac
 */
 const intToAlpha = i => {
     let newString = '';

@@ -12,7 +12,7 @@ const Output = props => {
           {
             props.shortOutput.length > 0 ?
             <div className="amber lighten-5">
-                <pre style={{padding: '0 1em'}}>{finalOutput}</pre>
+                <pre>{finalOutput}</pre>
             </div> :
             null
           }
