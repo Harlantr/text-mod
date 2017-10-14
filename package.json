@@ -13,7 +13,7 @@
     "build-prod": "webpack -p --config webpack.prod.config.js",
     "test": "jest",
     "test-watch": "npm test --watch",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d public",
     "predeploy": "npm run build-prod"
   },
   "babel": {
