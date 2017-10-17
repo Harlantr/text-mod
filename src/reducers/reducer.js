@@ -3,76 +3,76 @@ import reducerActions from '../const/reducerActions';
 import buildOutput from '../lib/buildOutput';
 
 /*
-    Initial State Object
+  Initial State Object
 */
 const initialState = {
-    count: 1,
-    userText: '',
-    numericIncrementorOptions: {
-        exists: false
-    },
-    shortOutput: [],
-    fullOutput: []
+  count: 1,
+  userText: '',
+  numericIncrementorOptions: {
+    exists: false
+  },
+  shortOutput: [],
+  fullOutput: []
 };
 
 /*
-    Main Reducer
+  Main Reducer
 */
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case reducerActions.CHANGE_TEXT:
-            return setUserText(state, action);
+  switch (action.type) {
+    case reducerActions.CHANGE_TEXT:
+      return setUserText(state, action);
 
-        case reducerActions.CHANGE_COUNT:
-            return setCount(state, action);
+    case reducerActions.CHANGE_COUNT:
+      return setCount(state, action);
 
-        case reducerActions.BUILD_SHORT_OUTPUT:
-            return setShortOutput(state);
+    case reducerActions.BUILD_SHORT_OUTPUT:
+      return setShortOutput(state);
 
-        case reducerActions.BUILD_FULL_OUTPUT:
-            return setFullOutput(state);
+    case reducerActions.BUILD_FULL_OUTPUT:
+      return setFullOutput(state);
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
 
 /*
-    Internal reducer methods
+  Internal reducer methods
 */
 const setUserText = (state, action) => {
-    const newUserText = action.userText;
-    const numericIncrementorExists = newUserText.indexOf(incrementors.number) !== -1;
+  const newUserText = action.userText;
+  const numericIncrementorExists = newUserText.indexOf(incrementors.number) !== -1;
 
-    return {
-        ...state,
-        userText: newUserText,
-        numericIncrementorOptions: {
-            exists: numericIncrementorExists
-        }
-    };
+  return {
+    ...state,
+    userText: newUserText,
+    numericIncrementorOptions: {
+      exists: numericIncrementorExists
+    }
+  };
 }
 
 const setCount = (state, action) => {
-    return {
-        ...state,
-        count: action.count
-    };
+  return {
+    ...state,
+    count: action.count
+  };
 }
 
 const setShortOutput = state => {
-    const max_count = 50;
-    const finalCount = state.count > max_count ? max_count : state.count;
+  const max_count = 50;
+  const finalCount = state.count > max_count ? max_count : state.count;
 
-    return {
-        ...state,
-        shortOutput: buildOutput(state.userText, finalCount)
-    };
+  return {
+    ...state,
+    shortOutput: buildOutput(state.userText, finalCount)
+  };
 };
 
 const setFullOutput = state => {
-    return {
-        ...state,
-        fullOutput: buildOutput(state.userText, state.count)
-    };
+  return {
+    ...state,
+    fullOutput: buildOutput(state.userText, state.count)
+  };
 }

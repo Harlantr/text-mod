@@ -1,11 +1,4 @@
 import React from 'react';
-import {
-    SideNav,
-    SideNavItem,
-    Button,
-    Collapsible,
-    CollapsibleItem
-} from 'react-materialize';
 
 import IndexIncrementorMenu from '../containers/menuSections/indexIncrementorMenu';
 import NumericIncrementorMenu from '../containers/menuSections/numericIncrementorMenu';
@@ -14,24 +7,18 @@ import AlphabetIncrementorMenu from '../containers/menuSections/alphabetIncremen
 import incrementors from '../const/incrementors';
 
 const SideMenu = props => (
-    <SideNav trigger={<Button>Menu</Button>} options={{ closeOnClick: true }}>
-        <SideNavItem subheader>Variables</SideNavItem>
-        <Collapsible>
-            <CollapsibleItem header={incrementors.index}>
-                <IndexIncrementorMenu />
-            </CollapsibleItem>
-        </Collapsible>
-        <Collapsible>
-            <CollapsibleItem header={incrementors.number}>
-                <NumericIncrementorMenu/>
-            </CollapsibleItem>
-        </Collapsible>
-        <Collapsible>
-            <CollapsibleItem header={incrementors.alphabet}>
-                <AlphabetIncrementorMenu/>
-            </CollapsibleItem>
-        </Collapsible>
-    </SideNav>
+  <div className="mdl-layout__drawer">
+    <span className="mdl-layout-title">Text Mod Variables</span>
+    <div className="mdl-card__supporting-text">
+      <p>Add these variables to your text to spice it up</p>
+      <IndexIncrementorMenu />
+      <hr/>
+      <NumericIncrementorMenu />
+      <hr/>
+      <AlphabetIncrementorMenu />
+      <hr/>
+    </div>
+  </div>
 );
 
 export default SideMenu

@@ -3,42 +3,42 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { buildFullOutput } from '../actions/actions';
 import copy from 'copy-to-clipboard';
-import { Button } from 'react-materialize';
 
 class CopyAllButton extends Component {
-    constructor(props) {
-        super(props);
-        this.handleCopy = this.handleCopy.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.handleCopy = this.handleCopy.bind(this);
+  }
 
-    handleCopy() {
-        this.props.buildFullOutput();
-    }
+  handleCopy() {
+    this.props.buildFullOutput();
+  }
 
-    componentWillReceiveProps(nextProps) {
-        copy(nextProps.fullOutput.join('\n'));
-    }
+  componentWillReceiveProps(nextProps) {
+    copy(nextProps.fullOutput.join('\n'));
+  }
 
-    render() {
-        return (
-            <div>
-                {
-                    this.props.shortOutput.length > 0 ?
-                    <Button waves='light' onClick={this.handleCopy}>Copy All</Button> :
-                    null
-                }
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        {
+          this.props.shortOutput.length > 0 &&
+          <a className="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+            Copy All
+          </a>
+        }
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-    shortOutput: state.reducer.shortOutput,
-    fullOutput: state.reducer.fullOutput
+  shortOutput: state.reducer.shortOutput,
+  fullOutput: state.reducer.fullOutput
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    buildFullOutput
+  buildFullOutput
 }, dispatch)
 
 export default connect(

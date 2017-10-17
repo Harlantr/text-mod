@@ -1,3 +1,39 @@
-pre {
+.output-wrap {
+  background-color: #f1f1f1;
   padding: 0 1em;
+}
+
+.container {
+  margin: 0 10%;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.footer-space {
+  height: 200px;
+}
+
+.link-space-right {
+  margin-right: 10px;
+}
+
+.menu-btn {
+  margin-right: 20px;
+}
+
+.mdl-layout__drawer {
+  width: 500px;
+  left: -250px;
+}
+
+.mdl-layout__drawer.is-visible {
+  left: 0;
+}
+
+.mdl-button--fab {
+  width: 1.5em;
+  height: 1.5em;
+  min-width: initial
 }

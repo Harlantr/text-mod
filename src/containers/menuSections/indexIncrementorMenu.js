@@ -2,36 +2,42 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../../actions/actions';
-import { Button } from 'react-materialize';
 import incrementors from '../../const/incrementors';
 
 class IndexIncrementorMenu extends Component {
-    constructor (props) {
-        super(props);
-        this.addIndexVariable = this.addIndexVariable.bind(this);
-    }
+  constructor (props) {
+    super(props);
+    this.addIndexVariable = this.addIndexVariable.bind(this);
+  }
 
-    addIndexVariable () {
-        const newString = this.props.userText + incrementors.index;
-        this.props.changeText(newString);
-    }
+  addIndexVariable () {
+    const newString = this.props.userText + incrementors.index;
+    this.props.changeText(newString);
+  }
 
-    render () {
-        return (
-            <div>
-                <p>Index Incrementor (Base 0)</p>
-                <Button waves='light' onClick={this.addIndexVariable}>Inject</Button>
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div>
+        <h5>
+          <button
+            className="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored menu-btn"
+            onClick={this.addIndexVariable}
+            title="Inject">
+            <i className="material-icons">add</i>
+          </button>
+          Index incrementor (~i)
+        </h5>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-    userText: state.reducer.userText
+  userText: state.reducer.userText
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    changeText
+  changeText
 }, dispatch)
 
 export default connect(

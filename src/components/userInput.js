@@ -1,13 +1,16 @@
 import React from 'react';
 import TextInput from '../containers/textInput';
 import CountInput from '../containers/countInput';
-import { Row } from 'react-materialize';
 
 const UserInput = props => (
-    <Row>
-        <TextInput />
-        <CountInput />
-    </Row>
+  <div className="mdl-grid">
+    <div className="mdl-cell mdl-cell--11-col">
+      <TextInput />
+    </div>
+    <div className="mdl-cell mdl-cell--1-col">
+      <CountInput />
+    </div>
+  </div>
 );
 
 export default UserInput

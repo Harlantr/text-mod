@@ -9,7 +9,7 @@ import './stylesheets/main.css'
 // render the main component
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+  <App/>
   </Provider>,
   document.getElementById('app')
 );

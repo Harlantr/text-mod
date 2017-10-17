@@ -2,30 +2,32 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../actions/actions';
-import { Input } from 'react-materialize';
 
 class TextInput extends Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-    handleChange(event) {
-        /*
-            Propagate the text change
-        */
-        this.props.changeText(event.target.value);
-    }
+  handleChange(event) {
+    /*
+      Propagate the text change
+    */
+    this.props.changeText(event.target.value);
+  }
 
-    render() {
-        return (
-            <Input placeholder="Input"
-                    s={10}
-                    label="Base Input"
-                    onChange={this.handleChange}
-                    value={this.props.userText}/>
-        );
-    }
+  render() {
+    return (
+      <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwidth">
+        <input id="txtInput"
+          className="mdl-textfield__input"
+          type="text"
+          onChange={this.handleChange}
+          value={this.props.userText}/>
+        <label className="mdl-textfield__label" htmlFor="txtInput">Input</label>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({

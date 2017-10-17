@@ -1,5 +1,5 @@
 export default Object.freeze({
-    index: '~i',
-    number: '~n',
-    alphabet: '~a'
+  index: '~i',
+  number: '~n',
+  alphabet: '~a'
 });

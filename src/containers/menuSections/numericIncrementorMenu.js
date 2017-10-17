@@ -2,37 +2,43 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeText } from '../../actions/actions';
-import { Button } from 'react-materialize';
 import incrementors from '../../const/incrementors';
 
 class NumericIncrementorMenu extends Component {
-    constructor (props) {
-        super(props);
-        this.addNumericVariable = this.addNumericVariable.bind(this);
-    }
+  constructor (props) {
+    super(props);
+    this.addNumericVariable = this.addNumericVariable.bind(this);
+  }
 
-    addNumericVariable () {
-        const newString = this.props.userText + incrementors.number;
-        this.props.changeText(newString);
-    }
+  addNumericVariable () {
+    const newString = this.props.userText + incrementors.number;
+    this.props.changeText(newString);
+  }
 
-    render () {
-        return (
-            <div>
-                <p>Numeric Incrementor (Base 1)</p>
-                <Button waves='light' onClick={this.addNumericVariable}>Inject</Button>
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div>
+        <h5>
+          <button
+            className="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored menu-btn"
+            onClick={this.addNumericVariable}
+            title="Inject">
+            <i className="material-icons">add</i>
+          </button>
+          Numeric incrementor (~n)
+        </h5>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-    userText: state.reducer.userText,
-    numericIncrementorOptions: state.reducer.numericIncrementorOptions
+  userText: state.reducer.userText,
+  numericIncrementorOptions: state.reducer.numericIncrementorOptions
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    changeText
+  changeText
 }, dispatch)
 
 export default connect(
