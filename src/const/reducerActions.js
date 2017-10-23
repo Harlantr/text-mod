@@ -1,6 +1,6 @@
+// List of available actions
 export default Object.freeze({
   CHANGE_TEXT: 'CHANGE_TEXT',
   CHANGE_COUNT: 'CHANGE_COUNT',
-  BUILD_SHORT_OUTPUT: 'BUILD_SHORT_OUTPUT',
-  BUILD_FULL_OUTPUT: 'BUILD_FULL_OUTPUT'
+  BUILD_OUTPUT: 'BUILD_OUTPUT'
 });

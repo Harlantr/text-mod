@@ -1,7 +1,6 @@
 import {
   changeText,
-  changeCount,
-  buildFullOutput
+  changeCount
 } from '../../src/actions/actions';
 import reducerActions from '../../src/const/reducerActions';
 
@@ -11,7 +10,7 @@ describe('changeText Action', () => {
     expect(changeText()).toBeInstanceOf(Function);
   });
 
-  it('should dispatch a CHANGE_TEXT action and a BUILD_SHORT_OUTPUT action', () => {
+  it('should dispatch a CHANGE_TEXT action and a BUILD_OUTPUT action', () => {
     const userText = 'This is text!';
     const dispatch = jest.fn();
 
@@ -26,7 +25,7 @@ describe('changeText Action', () => {
 
     //Expect that a dispatch was created to build the short output
     expect(dispatch).toHaveBeenCalledWith({
-      type: reducerActions.BUILD_SHORT_OUTPUT
+      type: reducerActions.BUILD_OUTPUT
     });
   });
 });
@@ -37,7 +36,7 @@ describe('changeCount Action', () => {
     expect(changeCount()).toBeInstanceOf(Function);
   });
 
-  it('should dispatch a CHANGE_COUNT action and a BUILD_SHORT_OUTPUT action', () => {
+  it('should dispatch a CHANGE_COUNT action and a BUILD_OUTPUT action', () => {
     const count = 10;
     const dispatch = jest.fn();
 
@@ -52,27 +51,7 @@ describe('changeCount Action', () => {
 
     //Expect that a dispatch was created to build the short output
     expect(dispatch).toHaveBeenCalledWith({
-      type: reducerActions.BUILD_SHORT_OUTPUT
-    });
-  });
-});
-
-describe('buildFullOutput Action', () => {
-
-  it('should return a function', () => {
-    expect(buildFullOutput()).toBeInstanceOf(Function);
-  });
-
-  it('should dispatch a BUILD_FULL_OUTPUT action', () => {
-    const count = 10;
-    const dispatch = jest.fn();
-
-    // Call the function
-    buildFullOutput(count)(dispatch);
-
-    //Expect that a dispatch was created with the correct data
-    expect(dispatch).toHaveBeenCalledWith({
-      type: reducerActions.BUILD_FULL_OUTPUT
+      type: reducerActions.BUILD_OUTPUT
     });
   });
 });

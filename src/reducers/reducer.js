@@ -11,8 +11,7 @@ const initialState = {
   numericIncrementorOptions: {
     exists: false
   },
-  shortOutput: [],
-  fullOutput: []
+  output: []
 };
 
 /*
@@ -26,11 +25,8 @@ export default (state = initialState, action) => {
     case reducerActions.CHANGE_COUNT:
       return setCount(state, action);
 
-    case reducerActions.BUILD_SHORT_OUTPUT:
-      return setShortOutput(state);
-
-    case reducerActions.BUILD_FULL_OUTPUT:
-      return setFullOutput(state);
+    case reducerActions.BUILD_OUTPUT:
+      return setOutput(state);
 
     default:
       return state;
@@ -60,19 +56,9 @@ const setCount = (state, action) => {
   };
 }
 
-const setShortOutput = state => {
-  const max_count = 50;
-  const finalCount = state.count > max_count ? max_count : state.count;
-
+const setOutput = state => {
   return {
     ...state,
-    shortOutput: buildOutput(state.userText, finalCount)
-  };
-};
-
-const setFullOutput = state => {
-  return {
-    ...state,
-    fullOutput: buildOutput(state.userText, state.count)
+    output: buildOutput(state.userText, state.count)
   };
 }

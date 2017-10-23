@@ -15,8 +15,7 @@ describe('reducer', () => {
       numericIncrementorOptions: {
         exists: false
       },
-      shortOutput: [],
-      fullOutput: []
+      output: []
     });
   });
 
@@ -37,8 +36,7 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       })
     });
   });
@@ -60,8 +58,7 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       })
     });
   });
@@ -75,11 +72,10 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       };
       const action = {
-        type: reducerActions.BUILD_SHORT_OUTPUT
+        type: reducerActions.BUILD_OUTPUT
       };
 
       const newState = reducer(currentState, action);
@@ -90,10 +86,9 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [
+        output: [
           'Test string'
-        ],
-        fullOutput: []
+        ]
       })
     });
 
@@ -104,11 +99,10 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       };
       const action = {
-        type: reducerActions.BUILD_SHORT_OUTPUT
+        type: reducerActions.BUILD_OUTPUT
       };
 
       const newState = reducer(currentState, action);
@@ -119,7 +113,7 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [
+        output: [
           'Test string',
           'Test string',
           'Test string',
@@ -130,8 +124,7 @@ describe('reducer', () => {
           'Test string',
           'Test string',
           'Test string'
-        ],
-        fullOutput: []
+        ]
       });
     });
 
@@ -142,11 +135,10 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       };
       const action = {
-        type: reducerActions.BUILD_SHORT_OUTPUT
+        type: reducerActions.BUILD_OUTPUT
       };
 
       const newState = reducer(currentState, action);
@@ -157,7 +149,17 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [
+        output: [
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
+          'Test string',
           'Test string',
           'Test string',
           'Test string',
@@ -208,8 +210,7 @@ describe('reducer', () => {
           'Test string',
           'Test string',
           'Test string'
-        ],
-        fullOutput: []
+        ]
       });
     });
   });
@@ -223,11 +224,10 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       };
       const action = {
-        type: reducerActions.BUILD_FULL_OUTPUT
+        type: reducerActions.BUILD_OUTPUT
       };
 
       const newState = reducer(currentState, action);
@@ -238,8 +238,7 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: [
+        output: [
           'Test string',
           'Test string',
           'Test string',
@@ -271,11 +270,10 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: []
+        output: []
       };
       const action = {
-        type: reducerActions.BUILD_FULL_OUTPUT
+        type: reducerActions.BUILD_OUTPUT
       };
 
       const newState = reducer(currentState, action);
@@ -286,8 +284,7 @@ describe('reducer', () => {
         numericIncrementorOptions: {
           exists: false
         },
-        shortOutput: [],
-        fullOutput: [
+        output: [
           'Test string',
           'Test string',
           'Test string',

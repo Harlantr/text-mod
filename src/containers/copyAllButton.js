@@ -11,21 +11,18 @@ class CopyAllButton extends Component {
   }
 
   handleCopy() {
-    this.props.buildFullOutput();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    copy(nextProps.fullOutput.join('\n'));
+    // Copy full output to clipboard, joined by a line break
+    copy(this.props.output.join('\n'));
   }
 
   render() {
     return (
       <div>
         {
-          this.props.shortOutput.length > 0 &&
-          <a className="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          this.props.output.length > 0 &&
+          <button className="mdl-button mdl-js-button mdl-js-ripple-effect" onClick={this.handleCopy}>
             Copy All
-          </a>
+          </button>
         }
       </div>
     );
@@ -33,8 +30,7 @@ class CopyAllButton extends Component {
 }
 
 const mapStateToProps = state => ({
-  shortOutput: state.reducer.shortOutput,
-  fullOutput: state.reducer.fullOutput
+  output: state.reducer.output
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
