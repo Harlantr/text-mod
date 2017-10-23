@@ -7,7 +7,7 @@ export const changeText = userText => {
       userText: userText
     });
     dispatch({
-      type: reducerActions.BUILD_SHORT_OUTPUT
+      type: reducerActions.BUILD_OUTPUT
     });
   };
 };
@@ -19,15 +19,7 @@ export const changeCount = count => {
       count: count
     });
     dispatch({
-      type: reducerActions.BUILD_SHORT_OUTPUT
-    });
-  };
-};
-
-export const buildFullOutput = () => {
-  return dispatch => {
-    dispatch({
-      type: reducerActions.BUILD_FULL_OUTPUT
+      type: reducerActions.BUILD_OUTPUT
     });
   };
 };

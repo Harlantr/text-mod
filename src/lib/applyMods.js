@@ -4,6 +4,7 @@ import incrementors from '../const/incrementors';
 const regexString = `${incrementors.index}|${incrementors.number}|${incrementors.alphabet}`;
 const regex = new RegExp(regexString, "g");
 
+// Define new string protopye
 String.prototype.applyMods = function(i) {
 
   //If string sector matches regex, return that sector as the correct variable value

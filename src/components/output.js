@@ -3,22 +3,25 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const Output = props => {
-  const finalOutput = props.shortOutput.map(
-    (line, i) => <p key={`line${i}`}>{line}</p>
+  // Display first 50 results from output
+  const finalOutput = props.output.slice(0,50).map(
+    (line, i) => i < 50 ? <p key={`line${i}`}>{line}</p> : null
   );
 
+  //Show shortened output only if there are elements to show
   return (
     <div className="output-wrap">
       {
-        props.shortOutput.length > 0 &&
-        <pre>{finalOutput}</pre>
+        props.output.length > 0 ?
+          <pre>{finalOutput}</pre> :
+          null
       }
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  shortOutput: state.reducer.shortOutput
+  output: state.reducer.output
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

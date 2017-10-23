@@ -11,8 +11,8 @@
   width: 100%;
 }
 
-.footer-space {
-  height: 200px;
+.mdl-layout__content {
+  flex: 1 0 auto;
 }
 
 .link-space-right {
